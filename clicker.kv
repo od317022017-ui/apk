@@ -1,0 +1,132 @@
+
+<ButtonMenu@Button>:
+    font_size: "40sp"
+    size_hint: (1, 0.15)
+    background_normal: ''
+    background_color: (0.357, 0.204, 0.6)
+    color: (0.176, 0.941, 0.53)
+    on_press: 
+        background_color: (0.361, 0.361, 0.361)
+    on_release: 
+        background_color: (0.569, 0.569, 0.569)
+
+
+<Menu>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: "20dp"
+        spacing: "20dp"
+        
+        Image:
+            source: "Images/Menu_img/logo.jpg"
+            size_hint: (1, 0.5)
+
+        Label:
+            text: 'Main Menu'
+            font_size: "40sp"
+            size_hint: (1, 0.2)
+
+        ButtonMenu:
+            text: 'Play'
+            on_press: root.go_game()
+        ButtonMenu:
+            text: 'Settings'
+            on_press: root.go_settings()
+        ButtonMenu:
+            text: 'Credits'
+        ButtonMenu:
+            text: 'Exit'
+            on_press: root.exit_app()
+<Game>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: "20dp"
+        spacing: "20dp"
+
+        FloatLayout:
+            size_hint_y: 0.65
+            Image:
+                id: our_image
+                source: ("Images/People/0cklicks.png")
+                size_hint: None, None
+                size: 300, 300
+                allow_stretch: True
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                keep_ratio: True
+
+        Label:
+            id: rad_label
+            text: f"Radiation: {root.rad}"
+            size_hint_y: 0.12
+        ButtonMenu:
+            text: "To Menu"
+            on_press: root.go_menu()
+<Settings>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: "20dp"
+        spacing: "20dp"
+        canvas.before:
+            Color: 
+                rgba: (0.38, 0.38, 0.369, 1)
+            Rectangle: 
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Settings"
+            font_size: "42sp"
+            size_hint_y: 0.15
+            bold: True
+            color: 0.922, 0.918, 0.78, 1
+        Label:
+            text: 'Posible creatures'
+            font_size: "36sp"
+            size_hint_y: 0.12
+            color: 0.31, 0.31, 0.298, 1
+        GridLayout:
+            id: creatures
+            cols: 3
+            spacing: "15dp"
+            size_hint_y: 0.35
+
+            ButtonMenu:
+                text: "Larry"
+                font_size: "20sp"
+                color: (0.561, 0.294, 0.294, 1)
+                on_press: root.set_creature("Larry")
+            ButtonMenu:
+                text: "Barry - Pest"
+                font_size: "20sp"
+                color: (0.588, 0.569, 0.529, 1)
+                on_press: root.set_creature("Barry")
+            ButtonMenu:
+                text: "Husk"
+                font_size: "20sp"
+                color: (0.878, 0.569, 0.055, 1)
+                on_press: root.set_creature("Husk")
+            ButtonMenu:
+                text: "Abomination"
+                font_size: "15sp"
+                color: (0.361, 0.247, 0.227, 1)
+                on_press: root.set_creature("Abomination")
+            ButtonMenu:
+                text: "Spider"
+                font_size: "20sp"
+                color: (0.361, 0.247, 0.227, 1)
+                on_press: root.set_creature("Spider")
+            ButtonMenu:
+                text: "Stalker"
+                font_size: "20sp"
+                color: (0.361, 0.247, 0.227, 1)
+                on_press: root.set_creature("Stalker")
+
+        Label:
+            id: chosen_creature
+            text: 'Selected creature: Larry'
+            font_size: "22sp"
+            size_hint_y: 0.1
+        ButtonMenu:
+            text: 'Back to Menu'
+            on_press: root.go_menu()
+
+            
